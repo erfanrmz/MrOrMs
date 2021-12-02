@@ -1,6 +1,8 @@
+/*using fullscreen for using margin auto and making divs vertically and horizontally center*/
 html {
   height: 100%;
 }
+/*using background image from image folder and then cover it with no repeat in page*/
 body {
   background-image: url("../images/background.jpg");
   background-size: cover;
@@ -8,13 +10,18 @@ body {
   display: flex;
   min-height: 100%;
 }
+/*any transition in website will take 0.4 seconds time*/
 body * {
   transition: 0.4s;
 }
+/*delete default margin of h1 and customized by myself*/
 h1 {
   margin-bottom: 0.5rem;
   margin-top: 0;
 }
+/*the main div that contains anything in the website 
+white background with 85% opacity 
+it use flex display with nowrap to making divs in a  row */
 .container {
   display: flex;
   flex-wrap: nowrap;
@@ -24,18 +31,22 @@ h1 {
   border-radius: 2rem;
   padding: 2rem;
 }
+/*divs that contains flex class will get 50% of the container*/
 .flex {
   flex: 1 1 50%;
   padding: 1rem;
 }
+/*giving all form's children 0.5rem margin on right,left,top and bottom*/
 form * {
   margin: 0.5rem;
 }
+/*making a gray dashed border style for saved answer's div*/
 #saved-answer {
   padding: 1rem;
   border-style: dashed;
   border-color: #a0a0a083;
 }
+/*giving the notif box fixed position and -100rem to right that we cant see it and making it beautiful by giving radius to the border*/
 .notif {
   position: fixed;
   top: 5rem;
@@ -45,6 +56,7 @@ form * {
   background-color: #f5f5f5;
   z-index: 100;
 }
+/*giving style to notif's P tag to make it amazing */
 .notif.error p {
   border-top-left-radius: 12px;
   border-bottom-left-radius: 12px;
@@ -54,6 +66,7 @@ form * {
   border: 2px solid #d14774;
   border-right: none;
 }
+/*giving this class to notfi make it appears on right top of page */
 .showNotif {
   right: 0;
 }

@@ -9,6 +9,7 @@ var notif = document.getElementById("alert");
 var maleRadio = document.getElementById("male");
 var femaleRadio = document.getElementById("female");
 
+//if we choose any radioButton of male or female it saves it otherwise it saves the api response in localStorage
 saveButton.onclick = function (e) {
   if (validating(inputName.value)) {
     if (maleRadio.checked) {
@@ -29,7 +30,7 @@ saveButton.onclick = function (e) {
     notifError("Enter a valid name");
   }
 };
-
+// after checking that the name is valid, make a Http request to api and get data in response to show it on page
 submitButton.onclick = function (e) {
   e.preventDefault();
   if (validating(inputName.value)) {
@@ -39,7 +40,7 @@ submitButton.onclick = function (e) {
       "https://api.genderize.io/?name=" + inputName.value,
       false
     );
-
+    //showing Error alert if any error occurred
     try {
       xmlHttp.send(null);
     } catch (err) {
@@ -50,6 +51,7 @@ submitButton.onclick = function (e) {
     console.log(response);
     predictionGender.innerHTML = response.gender;
     prediction.innerHTML = response.probability;
+    // if gender is null and api dont know the name show an error with not found message
     if (response.gender == null) {
       notifError("not found");
       predictionGender.innerHTML = "No data";
@@ -64,6 +66,7 @@ submitButton.onclick = function (e) {
     notifError("Enter a valid name");
   }
 };
+//if the name is valid and we had any save in localStorage it deletes the localStorage of that name otherwise alert some Error
 clearButton.onclick = function (e) {
   e.preventDefault();
   if (validating(inputName.value)) {
@@ -77,7 +80,7 @@ clearButton.onclick = function (e) {
     notifError("Enter a valid name");
   }
 };
-
+//give showNotif class to the p tag children of .notif.error div for 4seconds then removing it
 function notifError(message) {
   document.querySelector(".notif.error > p").innerHTML = message;
   notif.classList.add("showNotif");
@@ -85,7 +88,7 @@ function notifError(message) {
     notif.classList.remove("showNotif");
   }, 4000);
 }
-
+//check the input name value is including just A-Z characters and its length is between 1 to 255
 function validating(name) {
   var regex = /^[a-zA-Z ]{1,255}$/;
   return regex.test(name);
