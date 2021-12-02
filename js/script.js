@@ -34,6 +34,8 @@ saveButton.onclick = function (e) {
 submitButton.onclick = function (e) {
   e.preventDefault();
   if (validating(inputName.value)) {
+    male.checked = false;
+    female.checked = false;
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.open(
       "GET",
