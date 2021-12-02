@@ -8,6 +8,9 @@ body {
   display: flex;
   min-height: 100%;
 }
+body * {
+  transition: 0.4s;
+}
 h1 {
   margin-bottom: 0.5rem;
   margin-top: 0;
@@ -32,4 +35,25 @@ form * {
   padding: 1rem;
   border-style: dashed;
   border-color: #a0a0a083;
+}
+.notif {
+  position: fixed;
+  top: 5rem;
+  right: -100rem;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+  background-color: #f5f5f5;
+  z-index: 100;
+}
+.notif.error p {
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+  padding: 1rem;
+  margin: 0;
+  color: #d14774;
+  border: 2px solid #d14774;
+  border-right: none;
+}
+.showNotif {
+  right: 0;
 }
