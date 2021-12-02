@@ -1,6 +1,7 @@
 var inputName = document.getElementById("inputName");
 var saveButton = document.getElementById("save-button");
 var submitButton = document.getElementById("submit-button");
+var clearButton = document.getElementById("clear-button");
 var predictionGender = document.getElementById("prediction-gender");
 var prediction = document.getElementById("prediction");
 var savedName = document.getElementById("saved-name");
@@ -58,6 +59,19 @@ submitButton.onclick = function (e) {
       savedName.innerHTML = localStorage.getItem(inputName.value);
     } else {
       savedName.innerHTML = "Not Saved";
+    }
+  } else {
+    notifError("Enter a valid name");
+  }
+};
+clearButton.onclick = function (e) {
+  e.preventDefault();
+  if (validating(inputName.value)) {
+    if (localStorage.getItem(inputName.value)) {
+      localStorage.removeItem(inputName.value);
+      savedName.innerHTML = "Cleared";
+    } else {
+      notifError("You didn`t saved anything before");
     }
   } else {
     notifError("Enter a valid name");
